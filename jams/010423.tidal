@@ -1,0 +1,46 @@
+setcps 0.7
+
+d1 $ rarely rev $ fast 2 $ s "[bd:3 | bd:0] . [hh:0*2 | ~] . [sn:3|sn:1|amencutup:2] . hh:0!2"
+    # crunch 0.4
+    # gain 1.4
+
+
+d3 $ n "0*2 . [~ 3, 4] . 6*8 . [10|7|11|13] "
+ # s "super808"
+ # crunch 0.3
+ # room 0.1
+ # gain 1.3
+
+d2 $ often (jux rev) $ fast 4 $ n "<c b e f a e f c>"
+    # s "superfm"
+    # gain 1
+    # room 0.6
+    # dry 0.2
+    # legato 2
+
+unsolo 2
+
+d4 $ jux (fast 8) $ n "<c a f e>"
+ # s "superzow"
+ # detune 2
+ # voice 3
+ # accelerate 2
+ # slide 2
+ # legato 1.5
+ # gain 1
+
+unsolo 4
+
+
+d5 $ jux rev $ n "[0 . 1 . 3 . 5 . 4 . 3*6 . 0 4 . 0 4 . 0. 5 . 6 5 3 2 1 ]"
+ # s "amencutup"
+ # legato 0.2
+ # crunch 3
+ # gain 1.8
+ # room 2
+
+d5 $ jux rev $ n "<[0 0 2 3] [1 2 5 5] [2 3 4 2] [3 3 4 [2 2] 3]>*2"
+ # s "amencutup"
+ # gain 2
+
+

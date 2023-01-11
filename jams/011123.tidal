@@ -1,0 +1,38 @@
+d1 $ rarely (jux rev) $ n "[c/3] b . e/4 f . a/2 b . e/6 f"
+ # s "superfm"
+ # legato 1.2
+ # room 0.5
+ # dry 0.2
+ # gain 0.8
+
+d4 $ slow 2 $ n "[e/2]*4 b*3 . c/2*3 f*1.5 . b/2 b . f/2 e4 . f*4 . e2*2 . c4*8. b4"
+ # s "supersquare"
+ # legato 0.6
+ # room 0.5
+ # dry 0.2
+ # gain 0.9
+
+d2 $ jux rev $ sometimes (fast 1.5) $ n "2 . [3 2] . [2 3] . 4 . 5"
+ # cut 1
+ # s "dr2"
+ # gain 1
+ # lfo sine
+ # room 0.2
+
+mute 2
+
+unmute 2
+
+d3 $ fast 2 $ n "3 [[0*2]] [3, 5] [[0*1.5]]"
+ # s "dr2"
+ # gain 1
+
+unmute 3
+mute 3
+
+d5 $ jux rev $ n "0*2 . 1*3 . 0 . 1 . 0"
+ # s "break"
+ # cut 1
+ # room 0.6
+
+mute 5

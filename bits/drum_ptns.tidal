@@ -1,0 +1,322 @@
+-- Funk 13
+setcps(90/60/4)
+
+d1
+$ stack [
+struct ("1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0") $ sound "bd",
+struct ("0 0 1 0 0 1 0 0 0 0 0 0 1 0 1 1") $ sound "sd",
+struct ("1 0 1 1 1 0 1 0 1 1 0 1 0 1 1 0") $ sound "hc"
+]
+# gain "1 1 1.3 1 1 1 1 1 1 1 1 1 1.3 1 1 1"
+-- Pop 10
+setcps(100/60/4)
+
+d1
+$ stack [
+struct ("1 0 1 0 0 0 0 0 1 1 0 1 0 1 0 1") $ sound "bd",
+struct ("0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0") $ sound "sd",
+struct ("0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1") $ sound "ho",
+struct ("1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0") $ sound "hc"
+]
+# gain "1 1 1 1 1.3 1 1 1 1 1 1 1 1.3 1 1 1"
+-- Disco 8
+setcps(120/60/4)
+
+d1
+$ stack [
+struct ("1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0") $ sound "bd",
+struct ("1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0") $ sound "cp",
+struct ("0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0") $ sound "sd",
+struct ("0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1") $ sound "ho",
+struct ("1 1 1 0 0 1 1 0 1 1 1 0 0 1 1 0") $ sound "hc"
+]
+-- Rock 12
+setcps(110/60/4)
+
+d1
+$ stack [
+struct ("1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0") $ sound "bd",
+struct ("0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0") $ sound "sd",
+struct ("1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0") $ sound "hc"
+]
+# gain "1 1 1 1 1.3 1 1 1 1 1 1 1 1.3 1 1 1"
+-- R&B 12
+setcps(80/60/4)
+
+d1
+$ stack [
+struct ("1 0 1 0 0 0 0 1 1 0 1 0 0 1 1 0") $ sound "bd",
+struct ("0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0") $ sound "sd",
+struct ("0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0") $ sound "ho",
+struct ("1 1 0 1 1 1 0 1 1 1 0 1 1 1 0 1") $ sound "hc"
+]
+# gain ("1 1 1 1 1.3 1 1 1 1.3 1 1 1 1.3 1 1 1")
+
+d1
+$ slow 2 $ rarely (fast 2) $ stack [
+struct ("1 0 1 0 0 0 0 1 1 0 1 0 0 1 1 0") $ sound "[tabla:1|tabla:3]",
+struct ("0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0") $ sound "[tabla:2|tabla:6]",
+struct ("0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0") $ sound "[tabla:3|tabla:4|tabla:5]",
+struct ("1 1 0 1 1 1 0 1 1 1 0 1 1 1 0 1") $ sound "[tabla:4|tabla:6]"
+]
+# gain ("1 1 1 1 1.3 1 1 1 1.3 1 1 1 1.3 1 1 1")
+# room 0.3
+# dry 0.3
+# gain 0.5
+
+d3
+$ slow 2 $ rarely (fast 2) $ jux rev $ note "g b c5 e5 f5 e5 b c5 g f c" # sound "supermandolin"
+    # gain ("1 1.2 1.3 1 0.9 1 1.2 1.4 0.8")
+    # room 0.4
+    # dry 0.3
+
+do
+  setI "i" $ 0    -- i = hihat
+  setI "s" $ 10   -- s = snare
+  setI "k" $ 4    -- k = kick
+  setS "f" $ "ab" -- f = kit or folder
+
+do
+  setI "i" $ 2
+  setI "s" $ 1
+  setI "k" $ 0
+  setS "f" $ "drum"
+
+do
+  setI "i" $ 5 -- 5, 28
+  setI "s" $ 2  -- 2, 20, 22, 23
+  setI "k" $ 13
+  setS "f" $ "gretsch"
+
+setcps (150/60/4)
+
+d2 $ stack [
+   (slow 2 $ n "^i ~ ^i ~   ^i ~ ^i ^i   ^i ~ ^i ~   ^i ~ ^i ~   ^i ~ ^i ~   ^i ~ ^i ~   ^i ~ ^i ~   ^i ~ ^i ~ " # s "^f"),
+   (slow 2 $ n "~ ~ ~ ~   ^s ~ ~ ~   ~ ^s ~ ~   ~ ~ ^s ~   ~ ~ ~ ~   ~ ~ ^s ~  ~ ^s ~ ~  ^s ~ ~ ~ " # s "^f"),
+   (slow 2 $ n "^k ~ ~ ~   ~ ~ ~ ~   ~ ~ ^k ~   ~ ~ ~ ~  ~ ~ ^k ~   ~ ~ ~ ~   ~ ~ ^k ~   ~ ~ ~ ~ " # s "^f")
+]
+
+-- or, with some additional randomization and short syntax
+-- (which makes it much more dense to understand)
+
+d1 $ stack [
+   (n "[^i ~ ^i ~]*4" # s "^f"),
+   (n "<~!4   ^s ~!3   ~!4   ^s ~!3 . ~!4   ~ ~ ^s ~   ~!4   ^s ~ ~ ~ >" # gain "1" # s "^f"),
+   (n "<~ ~ ^s ~   ~ ~ ~ ~   ^s ~ ~ [^s ^s]   ~ ~ ^s ^s . ~ ~ ~ ~   ^s ~ ~ ~   ~ ~ ^s ~   ~ ~ ~ ~ >" # gain (range 0.35 0.75 rand) # s "^f"),
+   (n "<^k ~!3   ~ ~ ^k ~   ~ ~ ^k ~   ~!4 . ~ ~ ^k ~   ~!4   ^k ~!3 ~!4>" # s "^f")
+]
+
+drum = fmap drumLookup
+  where
+    -- Kick
+    drumLookup "kd" = 13
+    drumLookup "bd" = 13
+  -- Hats
+    drumLookup "hh" = 4
+    drumLookup "hc" = 4
+    drumLookup "h1" = 10
+    -- Tight Hats
+    drumLookup "h2" = 10
+    -- Hats alt
+    drumLookup "h3" = 5
+    -- Open hats
+    drumLookup "ho" = 11
+    -- Really Open hats
+    drumLookup "hO" = 17
+    -- Hat pedal
+    drumLookup "hp" = 21
+    -- Soft brush Snare
+    drumLookup "sb" = 3
+    -- Snare
+    drumLookup "sn" = 20
+    drumLookup "sd" = 20
+    -- Snare with rim
+    drumLookup "sr" = 22
+    -- Flam Snare
+    drumLookup "sf" = 9
+    -- Tom
+    drumLookup "tm" = 9
+    drumLookup "t1" = 9
+    drumLookup "th" = 9
+    -- Tom 2
+    drumLookup "t2" = 15
+    drumLookup "tl" = 15
+    -- Choke crash
+    drumLookup "cr" = 7
+    -- Ride bell
+    drumLookup "rb" = 18
+    -- Ride
+    drumLookup "rd" = 19
+    drumLookup _ = 0
+
+p "fouronfloor"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "kd*2", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "dancebeat"
+  $ stack [
+    drum "[~ hh]*4", -- Hats
+    drum "kd*4", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "firstBeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd ~ kd*2 ~]", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "secondBeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd*2 ~]*2", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "classicRock"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd*2 [~ kd]]*2", -- Kick
+    drum "[~ sr]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "classicRock2"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "~ [~ kd]*2", -- Kick
+    drum "sr*4" -- Snare
+  ]
+  # s "gretsch"
+
+-- Using hats instead of china
+p "classicHalfTime"
+  $ stack [
+    drum "hO*4", -- Hats
+    drum "[kd ~ ~ kd] [~ ~ kd ~] ~ ~", -- Kick
+    drum "~ sr" -- Snare
+  ]
+  # s "gretsch"
+
+p "classicHalfTime16s"
+  $ stack [
+    drum "hh*16", -- Hats
+    drum "[kd ~ ~ kd] [~ ~ kd ~] ~ ~", -- Kick
+    drum "~ sr" -- Snare
+  ]
+  # s "gretsch"
+
+p "classicHalfTimeAtNormal"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd ~ ~ kd] [~ ~ kd ~] ~ ~", -- Kick
+    drum "[~ sr]*2" -- Snare
+  ]
+  # s "gretsch"
+
+-- Using hats instead of china
+-- Attempt using euclid
+p "changingItUp"
+  $ stack [
+    drum "hO*4", -- Really Open Hats
+    drum "[~ kd] [kd ~] kd*2 [~ kd]", -- Kick
+    drum "sd [~ sd] ~ sd" -- Snare
+  ]
+  # s "gretsch"
+
+-- I wonder why he calls it that
+p "bieberbeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd ~]*2 ~ [~ kd] ~", -- Kick
+    drum "[~ sd]*2", -- Snare
+    drum "~ [~!3 hp] [~ hp ~ ~] ~" -- Ghost snare
+  ]
+  # s "gretsch"
+
+p "bieberBeatToms"
+  $ stack [
+    drum "tl*8", -- Low tom
+    drum "~ [~!3 th] [~ th ~ ~] ~",
+    drum "[kd ~]*2 ~ [~ kd] ~", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "popCountrybeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "kd ~ [~ kd] ~", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+-- Essentially the same thing on a ride
+p "popCountrybeatChorus"
+  $ stack [
+    drum "19*8", -- Ride
+    drum "kd ~ [~ kd] ~", -- Kick
+    drum "[~ sd]*2" -- Snare
+  ]
+  # s "gretsch"
+
+p "doubleTimeBeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "[kd [kd*2 ~]]*2", -- Kick
+    drum "[~ sd]*4" -- Snare
+  ]
+  # s "gretsch"
+
+-- TODO: Better version on high tom
+p "jungleBeat"
+  $ stack [
+    drum "[~!3 th] [~ th] [[~ th] ~] th", -- Tom
+    drum "tl*4", -- Low tom
+    drum "kd*4" -- Kick
+  ]
+  # s "gretsch"
+
+-- With cowbell instead of crosstick
+p "crossStickBeat"
+  $ stack [
+    drum "hh*8", -- Hats
+    drum "kd*2 ~", -- Kick
+    drum "~ [[6 ~ ~ 6] ~]" -- Snare
+  ]
+  # s "gretsch"
+
+p "fouronfloorHalfTime"
+  $ stack [
+    drum "hO*4", -- Hats
+    drum "kd*4", -- Kick
+    drum "[~ sr]" -- Snare
+  ]
+  # s "gretsch"
+
+-- Essentially a standard funk beat
+p "firstGhostBeat"
+  $ stack [
+    drum "h1*8", -- Hats
+    drum "[kd ~]*2 ~ [~ kd] ~", -- Kick
+    drum "[~ sr]*2", -- Hard snare
+    drum "[~ hp]*8" -- Ghost snare
+  ]
+  # s "gretsch"
+
+p "anthemTomBeat"
+  $ stack [
+    drum "[~ kd]*2 [~ kd kd ~] [kd ~ ~ kd] [[~ kd] ~]", -- Kick
+    drum "th*2 [~ [~ th]] [[~ th] ~] th",
+    drum "tl*2 [~ [~ tl]] [~ tl] ~", -- Low tom
+    drum "[~ sr]*2"
+  ]
+# s "gretsch"
