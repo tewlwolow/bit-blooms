@@ -8,7 +8,7 @@ d1 $ rarely (jux rev) $ n "[c/3] b . e/4 f . a/2 b . e/6 f"
 d4 $ slow 2 $ n "[e/2]*4 b*3 . c/2*3 f*1.5 . b/2 b . f/2 e4 . f*4 . e2*2 . c4*8. b4"
  # s "supersquare"
  # legato 0.6
- # room 0.5
+ # room 0.4
  # dry 0.2
  # gain 0.9
 
